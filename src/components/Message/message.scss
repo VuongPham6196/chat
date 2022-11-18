@@ -1,0 +1,44 @@
+.message {
+  display: flex;
+  padding: 5px;
+  gap: 15px;
+
+  .content {
+    background-color: white;
+    color: black;
+
+    border-radius: 0px 10px 10px 10px;
+    padding: 5px 10px;
+    height: fit-content;
+  }
+
+  .avatar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+
+    img {
+      height: 32px;
+      width: 32px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    span {
+      color: #a6a6b4;
+      font-size: 12px;
+    }
+  }
+
+  &.owner {
+    flex-direction: row-reverse;
+
+    .content {
+      background-color: #89a0f9;
+      color: white;
+
+      border-radius: 10px 0px 10px 10px;
+    }
+  }
+}

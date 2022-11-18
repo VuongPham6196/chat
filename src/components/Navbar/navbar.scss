@@ -1,0 +1,41 @@
+.navbar {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  background-color: #2e2d52;
+  justify-content: space-between;
+  padding: 20px 10px;
+
+  .logo {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+  }
+
+  .userDetail {
+    display: flex;
+    color: white;
+    align-items: center;
+    font-size: 14px;
+    gap: 5px;
+
+    img {
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      object-fit: cover;
+    }
+
+    button {
+      color: white;
+      background-color: #8982ce96;
+      border: none;
+      border-radius: 5px;
+      padding: 2px 5px;
+      &:hover {
+        cursor: pointer;
+      }
+      margin-left: 5px;
+    }
+  }
+}

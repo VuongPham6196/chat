@@ -1,0 +1,33 @@
+.chatContainer {
+  flex: 2;
+  background-color: #d9dbf1;
+
+  .chatInfor {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #5e5b8e;
+    padding: 10px;
+    color: white;
+
+    .chatIcons {
+      display: flex;
+      gap: 10px;
+
+      img {
+        height: 24px;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .messages {
+    padding: 10px;
+
+    overflow-y: scroll;
+  }
+}

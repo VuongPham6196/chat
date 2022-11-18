@@ -1,0 +1,27 @@
+.sidebar {
+  flex: 1;
+  overflow-y: scroll;
+  background-color: #3d3c61;
+  border-right: 1px solid #3d3c61;
+
+  .top {
+    position: fixed;
+  }
+  .bottom {
+    margin-top: 100px;
+  }
+
+  input {
+    background-color: #3d3c61;
+    width: 100%;
+    color: white;
+    border: none;
+    border-bottom: 1px solid lightgray;
+    padding: 10px;
+    outline: none;
+
+    &::placeholder {
+      color: lightgray;
+    }
+  }
+}
