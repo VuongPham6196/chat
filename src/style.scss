@@ -1,5 +1,5 @@
 .App {
-  background-color: #8ecae6;
+  background-color: #a5bafc;
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -13,5 +13,25 @@
     border-radius: 10px;
     overflow: hidden;
     display: flex;
+  }
+}
+
+@mixin mobile {
+  @media screen and (max-width: 480px) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media screen and (max-width: 768px) {
+    font-size: 80%;
+    ::placeholder {
+      font-size: 70%;
+    }
+    @content;
+  }
+}
+@mixin laptop {
+  @media screen and (max-width: 1200px) {
+    @content;
   }
 }

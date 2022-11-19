@@ -3,6 +3,7 @@ import cam from '../../assets/images/cam.png';
 import add from '../../assets/images/add.png';
 import more from '../../assets/images/more.png';
 import Message from '../Message/Message';
+import Input from '../Input/Input';
 
 import './chatcontainer.scss';
 
@@ -18,17 +19,22 @@ const ChatContainer = () => {
         </div>
       </div>
       <div className="messages">
+        <Message type="owner" />
         <Message />
         <Message />
+        <Message type="owner" />
+        <Message />
+        <Message type="owner" />
+        <Message />
+        <Message type="owner" />
         <Message />
         <Message />
+        <Message type="owner" />
         <Message />
-        <Message />
-        <Message />
-        <Message />
-        <Message />
+        <Message type="owner" />
         <Message />
       </div>
+      <Input />
     </div>
   );
 };

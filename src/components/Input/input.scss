@@ -1,0 +1,39 @@
+.input {
+  height: 50px;
+  background-color: white;
+  padding: 10px;
+  display: flex;
+  //   align-items: center;
+  justify-content: space-between;
+
+  input {
+    outline: none;
+    border: none;
+    font-size: 18px;
+    width: 100%;
+    overflow: visible;
+    word-wrap: normal;
+  }
+
+  .send {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+
+    button {
+      height: 100%;
+      padding: 5px 10px;
+      background-color: #697ac2;
+      color: white;
+      border: none;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+
+    img {
+      width: 24px;
+      cursor: pointer;
+    }
+  }
+}

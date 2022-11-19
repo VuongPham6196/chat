@@ -24,6 +24,10 @@
     .lastMessage {
       color: lightgray;
       font-size: 14px;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
     }
   }
 

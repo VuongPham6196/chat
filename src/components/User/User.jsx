@@ -9,8 +9,8 @@ const User = () => {
         alt="avatar"
       />
       <div className="content">
-        <span className="name">Vuong</span>
-        <span className="lastMessage">hello</span>
+        <p className="name">Vuong</p>
+        <p className="lastMessage">helloooooooooooooo asdsad</p>
       </div>
     </div>
   );

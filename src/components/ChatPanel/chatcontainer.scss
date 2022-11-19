@@ -1,6 +1,12 @@
+@import '../../style.scss';
+
 .chatContainer {
   flex: 2;
   background-color: #d9dbf1;
+
+  @include tablet {
+    flex: 3;
+  }
 
   .chatInfor {
     height: 50px;
@@ -27,7 +33,7 @@
 
   .messages {
     padding: 10px;
-
     overflow-y: scroll;
+    height: calc(100% - 100px);
   }
 }

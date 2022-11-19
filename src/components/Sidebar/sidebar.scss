@@ -1,14 +1,41 @@
+@import '../../style.scss';
+
 .sidebar {
   flex: 1;
-  overflow-y: scroll;
   background-color: #3d3c61;
   border-right: 1px solid #3d3c61;
+  position: relative;
 
-  .top {
-    position: fixed;
+  @include tablet {
+    .navbar {
+      .logo {
+        display: none;
+      }
+    }
+
+    .listFriend {
+      align-items: center;
+
+      .user {
+        img {
+          width: 32px;
+          height: 32px;
+        }
+      }
+    }
   }
+
+  @include mobile {
+    display: none;
+  }
+
   .bottom {
-    margin-top: 100px;
+    height: calc(100% - 100px);
+    overflow-y: scroll;
+    &::-webkit-scrollbar-track {
+      width: 50px;
+      color: aqua;
+    }
   }
 
   input {

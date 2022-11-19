@@ -1,15 +1,45 @@
+@import '../../style.scss';
 .message {
   display: flex;
-  padding: 5px;
+  padding: 15px 5px;
   gap: 15px;
 
   .content {
-    background-color: white;
+    max-width: 70%;
     color: black;
+    display: flex;
+    flex-direction: column;
+    word-wrap: break-word;
 
-    border-radius: 0px 10px 10px 10px;
-    padding: 5px 10px;
-    height: fit-content;
+    p {
+      padding: 5px 10px;
+      max-width: max-content;
+      text-align: left;
+      background-color: white;
+      border-radius: 0px 10px 10px 10px;
+      margin-bottom: 10px;
+    }
+
+    img {
+      max-width: 50%;
+      height: auto;
+      margin-bottom: 10px;
+    }
+  }
+
+  &.owner {
+    flex-direction: row-reverse;
+
+    .content {
+      color: white;
+      align-items: flex-end;
+    }
+
+    p {
+      background-color: #89a0f9;
+      border-radius: 10px 0px 10px 10px;
+      text-align: right;
+    }
   }
 
   .avatar {
@@ -28,17 +58,6 @@
     span {
       color: #a6a6b4;
       font-size: 12px;
-    }
-  }
-
-  &.owner {
-    flex-direction: row-reverse;
-
-    .content {
-      background-color: #89a0f9;
-      color: white;
-
-      border-radius: 10px 0px 10px 10px;
     }
   }
 }

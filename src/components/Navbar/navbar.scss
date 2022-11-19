@@ -1,3 +1,5 @@
+@import '../../style.scss';
+
 .navbar {
   height: 50px;
   display: flex;
@@ -5,16 +7,16 @@
   background-color: #2e2d52;
   justify-content: space-between;
   padding: 20px 10px;
+  color: white;
 
   .logo {
     font-size: 20px;
     font-weight: bold;
-    color: white;
+    margin-right: 10px;
   }
 
   .userDetail {
     display: flex;
-    color: white;
     align-items: center;
     font-size: 14px;
     gap: 5px;
@@ -32,10 +34,10 @@
       border: none;
       border-radius: 5px;
       padding: 2px 5px;
+      margin-left: 5px;
       &:hover {
         cursor: pointer;
       }
-      margin-left: 5px;
     }
   }
 }
