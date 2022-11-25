@@ -1,16 +1,61 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './user.scss';
 
-const User = () => {
+import {
+  doc,
+  getDoc,
+  serverTimestamp,
+  setDoc,
+  updateDoc,
+} from 'firebase/firestore';
+import { db } from '../../firebase';
+import { AuthContext } from '../../context/auth-context';
+
+const User = ({ data, onClick }) => {
+  const { currentUser } = useContext(AuthContext);
+
+  const handSelect = async () => {
+    console.log('clicked');
+    const combindedID =
+      currentUser.uid > data.uid
+        ? currentUser.uid + data.uid
+        : data.uid + currentUser.uid;
+    const res = await getDoc(doc(db, 'chats', combindedID));
+
+    if (!res.exists()) {
+      // create a chat in chats collection
+      await setDoc(doc(db, 'chats', combindedID), { messages: [] });
+
+      // create an user chats
+      await updateDoc(doc(db, 'userChats', currentUser.uid), {
+        [combindedID + '.userInfo']: {
+          uid: data.uid,
+          displayName: data.displayName,
+          photoURL: data.photoURL,
+        },
+        [combindedID + '.date']: serverTimestamp(),
+      });
+
+      await updateDoc(doc(db, 'userChats', data.uid), {
+        [combindedID + '.userInfo']: {
+          uid: currentUser.uid,
+          displayName: currentUser.displayName,
+          photoURL: currentUser.photoURL,
+        },
+        [combindedID + '.date']: serverTimestamp(),
+      });
+    }
+    onClick();
+  };
+
   return (
-    <div className="user">
-      <img
-        src="https://scontent.fdad1-4.fna.fbcdn.net/v/t1.6435-9/165973108_1836593139823574_4408794443378346655_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=3nuX3FWH7JsAX8-grT0&_nc_ht=scontent.fdad1-4.fna&oh=00_AfCVOLClfogVPOCtTB3XbRL3Rk1mcbp130jhSIkUzqja1Q&oe=639C29EE"
-        alt="avatar"
-      />
+    <div className="user" onClick={handSelect}>
+      <img src={data.photoURL} alt="avatar" />
       <div className="content">
-        <p className="name">Vuong</p>
-        <p className="lastMessage">helloooooooooooooo asdsad</p>
+        <p className="name">{data.displayName}</p>
+        {data.lastMessage && (
+          <p className="lastMessage">hello asdsad</p>
+        )}
       </div>
     </div>
   );

@@ -6,9 +6,14 @@ import './form.scss';
 import addAvatar from '../../assets/images/addAvatar.png';
 
 import { auth, db, storage } from '../../firebase';
-import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile,
+} from 'firebase/auth';
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { doc, setDoc } from 'firebase/firestore';
+
 
 const Form = () => {
   const location = useLocation();
@@ -19,7 +24,7 @@ const Form = () => {
   const [isError, setIsError] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
 
-  const submitHandler = async (e) => {
+  const submitRegisterHandler = async (e) => {
     e.preventDefault();
     const displayName = e.target[0].value;
     const email = e.target[1].value;
@@ -37,11 +42,12 @@ const Form = () => {
       await uploadBytesResumable(storageRef, file).then(() => {
         getDownloadURL(storageRef).then(async (downloadURL) => {
           try {
-            //Update profile
-            // await updateProfile(res.user, {
-            //   displayName,
-            //   photoURL: downloadURL,
-            // });
+            // Update profile
+            await updateProfile(res.user, {
+              displayName,
+              photoURL: downloadURL,
+            });
+
             //create user on firestore
             await setDoc(doc(db, 'users', res.user.uid), {
               uid: res.user.uid,
@@ -68,11 +74,26 @@ const Form = () => {
     }
   };
 
+  const submitLoginHandler = async (e) => {
+    e.preventDefault();
+    const email = e.target[0].value;
+    const password = e.target[1].value;
+
+    try {
+      const res = await signInWithEmailAndPassword(auth, email, password);
+      navigate('/');
+      setIsError(false);
+    } catch (err) {
+      setIsError(true);
+      setErrorMsg(err.message);
+    }
+  };
+
   return (
     <div className="formContainer">
       <span className="logo">V Chat</span>
       <span className="title">{isLogin ? 'Login' : 'Register'}</span>
-      <form onSubmit={submitHandler}>
+      <form onSubmit={isLogin ? submitLoginHandler : submitRegisterHandler}>
         {!isLogin && <input type="text" placeholder="display name" />}
         <input type="email" placeholder="email" />
         <input type="password" placeholder="password" />
